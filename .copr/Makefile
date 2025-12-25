@@ -3,7 +3,7 @@ outdir ?= .
 
 srpm:
 	# 1. Install tools
-	# dnf install -y git rpm-build
+	dnf install -y git rpm-build
 
 	# 2. Extract Version (Robustly: grab only the first match)
 	$(eval VERSION := $(shell grep "^Version:" libbacktrace.spec | head -n 1 | awk '{print $$2}'))
