@@ -6,8 +6,6 @@ Summary:        A C library to produce symbolic backtraces
 License:        BSD
 URL:            https://github.com/ianlancetaylor/libbacktrace
 Source0:        %{name}-%{version}.tar.gz
-
-
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
