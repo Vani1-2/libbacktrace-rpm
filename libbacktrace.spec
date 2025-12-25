@@ -1,16 +1,18 @@
-Name:           libbacktrace
+Name:           libbacktrace-devel
 Version:        1.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A C library to produce symbolic backtraces
 
 License:        BSD
 URL:            https://github.com/ianlancetaylor/libbacktrace
 Source0:        %{name}-%{version}.tar.gz
 
-BuildRequires:  gcc
-BuildRequires:  make
+
+BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+BuildRequires:  gcc
+BuildRequires:  make
 
 %description
 A C library that may be linked into a C/C++ program to produce symbolic 
@@ -28,7 +30,7 @@ files for developing applications that use %{name}.
 %autosetup
 
 %build
-
+autoreconf -fiv
 %configure --enable-shared --disable-static --with-pic
 %make_build
 
@@ -62,5 +64,5 @@ EOF
 %{_libdir}/pkgconfig/libbacktrace.pc
 
 %changelog
-* Thu Dec 25 2025 Giovanni <youremail@example.com> - 1.0-2
-- Initial package with pkg-config support
+* Thu Dec 25 2025 Giovanni <youremail@example.com> - 1.0-1
+- Initial package with autoreconf fix
