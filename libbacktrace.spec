@@ -1,4 +1,4 @@
-Name:           libbacktrace
+Name:           libbacktrace-devel
 Version:        1.0
 Release:        1%{?dist}
 Summary:        A C library to produce symbolic backtraces
@@ -42,6 +42,7 @@ find %{buildroot} -name '*.la' -delete
 %{_includedir}/backtrace.h
 %{_includedir}/backtrace-supported.h
 %{_libdir}/libbacktrace.so
+%{_libdir}/pkgconfig/libbacktrace.pc
 
 %changelog
 * Thu Dec 25 2025 Vani1-2 <giovannirafanan609@gmail.com> - 1.0-1
