@@ -1,4 +1,4 @@
-Name:           libbacktrace-devel
+Name:           libbacktrace
 Version:        1.0
 Release:        3%{?dist}
 Summary:        A C library to produce symbolic backtraces

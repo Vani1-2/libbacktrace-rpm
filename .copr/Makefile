@@ -13,7 +13,7 @@ srpm:
 
 	# 3. Create tarball
 	# If this fails, check the DEBUG line above!
-	git archive --format=tar.gz --prefix=libbacktrace$(VERSION)/ -o libbacktrace$(VERSION).tar.gz HEAD
+	git archive --format=tar.gz --prefix=libbacktrace-$(VERSION)/ -o libbacktrace-	$(VERSION).tar.gz HEAD
 
 	# 4. Build SRPM
 	rpmbuild -bs --define "_sourcedir $(PWD)" --define "_srcrpmdir $(outdir)" libbacktrace.spec
