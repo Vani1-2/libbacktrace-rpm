@@ -62,5 +62,5 @@ EOF
 %{_libdir}/pkgconfig/libbacktrace.pc
 
 %changelog
-* Thu Dec 25 2025 Giovanni <youremail@example.com> - 1.0-1
-- Initial package with autoreconf fix
+* Thu Dec 25 2025 Vani1-2 <giovannirafanan609@gmail.com> - 1.0-3
+- fixed build errors caused by mismatched tar.gz
