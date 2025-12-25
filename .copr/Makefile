@@ -1,22 +1,15 @@
 PACKAGE_NAME = libbacktrace
-VERSION = 1.0
-SPEC_FILE = $(PACKAGE_NAME).spec
+outdir ?= $(PWD)
 
 
-dist:
-	git archive --format=tar.gz --prefix=$(PACKAGE_NAME)-master/ -o $(PACKAGE_NAME)-master.zip HEAD
-
-srpm: dist
-	rpmbuild \
-		--define "_topdir $(PWD)/rpmbuild" \
-		--define "_sourcedir $(PWD)" \
-		--define "_specdir $(PWD)" \
-		--define "_srcrpmdir $(PWD)" \
-		-bs $(SPEC_FILE)
-	@echo "SRPM generated at: $(PWD)/$(PACKAGE_NAME)-$(VERSION)-1.*.src.rpm"
-
+srpm:
+	
+	dnf install -y git
+	$(eval VERSION := $(shell grep "Version:" $(PACKAGE_NAME).spec | awk '{print $$2}'))
+	git archive --format=tar.gz --prefix=$(PACKAGE_NAME)-$(VERSION)/ -o $(PACKAGE_NAME)-$(VERSION).tar.gz HEAD
+	rpmbuild -bs --define "_sourcedir $(PWD)" --define "_srcrpmdir $(outdir)" $(PACKAGE_NAME).spec
 
 clean:
-	rm -rf rpmbuild $(PACKAGE_NAME)-master.zip *.src.rpm
+	rm -f *.tar.gz *.src.rpm
 
-.PHONY: dist srpm clean
+.PHONY: srpm clean
