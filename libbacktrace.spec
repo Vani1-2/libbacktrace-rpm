@@ -1,6 +1,6 @@
 Name:           libbacktrace-devel
 Version:        1.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A C library to produce symbolic backtraces
 License:        BSD
 URL:            https://github.com/ianlancetaylor/libbacktrace
@@ -33,6 +33,12 @@ developing applications that use %{name}.
 %install
 %make_install
 find %{buildroot} -name '*.la' -delete
+mkdir -p %{buildroot}%{_libdir}/pkgconfig
+cat > %{buildroot}%{_libdir}/pkgconfig/libbacktrace.pc <<EOF
+prefix=%{_prefix}
+exec_prefix=%{_exec_prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}
 
 %files
 %license LICENSE
